@@ -1,4 +1,4 @@
-package com.assement.mapeamentoJason;
+package com.asap.crud.mapeamentoJason;
 
 import com.assement.model.Apolice;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

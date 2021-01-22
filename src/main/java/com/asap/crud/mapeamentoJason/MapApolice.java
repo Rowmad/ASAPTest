@@ -1,4 +1,4 @@
-package com.assement.mapeamentoJason;
+package com.asap.crud.mapeamentoJason;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

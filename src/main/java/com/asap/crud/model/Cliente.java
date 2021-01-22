@@ -1,4 +1,4 @@
-package com.assement.model;
+package com.asap.crud.model;
 
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;

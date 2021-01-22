@@ -1,4 +1,4 @@
-package com.assement.repository;
+package com.asap.crud.repository;
 
 
 import com.assement.model.Apolice;
