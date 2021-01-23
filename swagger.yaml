@@ -1,0 +1,266 @@
+swagger: "2.0"
+info:
+  description: "Implementação de um serviçi"
+  version: "1.0.0"
+  title: "ASAPTest"
+  
+host: "localhost:8080"
+basePath: "/"
+tags:
+- name: "cliente"
+  description: "Cria, atualiza e deleta clientes"
+- name: "apolice"
+  description: "Cria, atualiza e deleta  apolices"
+  
+schemes:
+- "https"
+- "http"
+      
+
+paths:
+   /cliente:
+    post:
+      tags:
+      - "cliente"
+      summary: "Cria um cliente"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: ""
+        required: true
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/cliente"
+      responses:
+        "201":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/cliente"
+  
+   /cliente/{cpf}/{numero}:
+    post:
+      tags:
+      - "cliente"
+      summary: "Adiciona uma apolice ao um cliente"
+      description: ""
+      produces:
+      - "application/json"
+      parameters:
+      - name: "cpf"
+        in: "path"
+        description: "cpf do cliente solicitado"
+        required: true
+        type: "string"
+      - name: "numero"
+        in: "path"
+        description: "numero da apolice que sera adicionada"
+        required: true
+        type: "integer"
+        format: "int64"  
+      responses:
+        "201":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/cliente"
+            
+   /cliente/{cpf}:
+    get:
+      tags:
+      - "cliente"
+      summary: "Acessa o cliente solicitado"
+      description: ""
+      produces:
+      - "application/json"
+      parameters:
+      - name: "cpf"
+        in: "path"
+        description: "cpf do cliente solicitado"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/cliente"        
+            
+
+    put:
+      tags:
+      - "cliente"
+      summary: "Atualiza um cliente existente"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: ""
+        required: true
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/cliente"
+      - name: "cpf"
+        in: "path"
+        description: "cpf do cliente a ser atualizado"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/cliente"
+            
+    delete:
+      tags:
+      - "cliente"
+      summary: "Deleta um cliente"
+      description: ""
+      parameters:
+      - name: "cpf"
+        in: "path"
+        description: "cpf do cliente a ser deletado"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+            
+   /apolice:
+    post:
+      tags:
+      - "apolice"
+      summary: "Cria uma apolice"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: ""
+        required: true
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/apolice"
+      responses:
+        "201":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/apolice"
+  
+
+   /apolice/{numero}:
+    get:
+      tags:
+      - "apolice"
+      summary: "Acessa a apolice solicitada"
+      description: ""
+      produces:
+      - "application/json"
+      parameters:
+      - name: "numero"
+        in: "path"
+        description: "numero da apolice solicitada"
+        required: true
+        type: "integer"
+        format: "int64" 
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/apolice"        
+            
+    put:
+      tags:
+      - "apolice"
+      summary: "Atualiza uma apolice existente"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: ""
+        required: true
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/apolice"
+      - name: "numero"
+        in: "path"
+        description: "numero da apolice a ser atualizada"
+        required: true
+        type: "integer"
+        format: "int64" 
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/apolice"
+            
+   /apolice/{cpf}/{numero}:        
+    delete:
+      tags:
+      - "apolice"
+      summary: "Deleta uma apolice"
+      description: ""
+      parameters:
+      - name: "cpf"
+        in: "path"
+        description: "cpf do cliente solicitado"
+        required: true
+        type: "string"
+      - name: "numero"
+        in: "path"
+        description: "numero da apolice a ser deletada"
+        required: true
+        type: "integer"
+        format: "int64" 
+      responses:
+        "200":
+          description: "successful operation"
+            
+definitions:
+   cliente:
+    type: "object"
+    properties:
+      cpf:
+        type: "string"
+      nome:
+        type: "string"
+      cidade:
+        type: "string"
+      uf:
+        type: "string"
+        
+   apolice:
+     type: "object"
+     properties:
+      numero:
+        type: "integer"
+        format: "int64"
+      inicioVigencia:
+        type: "string"
+      fimVigencia:
+        type: "string"
+      placa:
+        type: "string"      
+      valor:
+        type: "number"
+      
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
